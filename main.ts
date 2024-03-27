@@ -23,15 +23,21 @@ if (PinAnswer.pin === myPin) {
       choices: ["withdraw", "check balance"],
     },
   ]);
+
   console.log(operationsAns);
 
-  if (operationsAns === "withdraw") {
-    let amountAns = await inquirer.prompt({
+  if (operationsAns.operations === "withdraw") {
+    let amountAns = await inquirer.prompt(
+    [
+      {
       name: "amount",
       message: "enter your amount",
       type: "number",
-    }
+      }
+    ]
   );
-amountAns.amount
+
+  myBalance -= amountAns.amount;
+  console.log("your remaning balance is " + myBalance )
   }
 } else console.log("Incorrect pin number");

@@ -16,11 +16,20 @@ if (PinAnswer.pin === myPin) {
             name: "operations",
             message: "please select option",
             type: "list",
-            choices: ["withdraw", "check balance"]
-        }
+            choices: ["withdraw", "check balance"],
+        },
     ]);
     console.log(operationsAns);
-    if (operationsAns === "withdraw") {
+    if (operationsAns.operations === "withdraw") {
+        let amountAns = await inquirer.prompt([
+            {
+                name: "amount",
+                message: "enter your amount",
+                type: "number",
+            }
+        ]);
+        myBalance -= amountAns.amount;
+        console.log("your remaning balance is " + myBalance);
     }
 }
 else
